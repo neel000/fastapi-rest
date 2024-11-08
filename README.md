@@ -1,1 +1,4 @@
-# fastapi-rest
+# Build
+```bash
+python setup.py sdist bdist_wheel
+```
