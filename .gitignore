@@ -13,3 +13,7 @@ fastapi_rest/*/*/__pycache__
 fastapi_rest/*/*/__pycache__/
 fastapi_rest/*/*/*/__pycache__
 fastapi_rest/*/*/*/__pycache__/
+fastapi_rest/*/*/*/*/__pycache__
+fastapi_rest/*/*/*/*/__pycache__/
+fastapi_rest/*/*/*/*/*/__pycache__
+fastapi_rest/*/*/*/*/*/__pycache__/

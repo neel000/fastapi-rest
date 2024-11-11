@@ -1,31 +1,27 @@
-import argparse
 import os
 import shutil
 import sys
+from .console import Console
 
 class BaseCommand:
-
     def help(self):
-        print("fastapi-rest startproject <project_name>\n")
-        print("fastapi-rest createapp <project_name>")
+        Console.info("fastapi-rest startproject <project_name>", end = "   ")
+        Console.info("fastapi-rest createapp <project_name>")
         return 
     
     def no_app_name(self):
-        print("APP Name is not found")
+        Console.error("APP Name is not found")
 
     def create_app(self, app_name:str):
         app_name = app_name if not app_name == "." else ""
       
         if app_name:
             if os.path.exists(app_name):
-                return print(f"Error: The directory '{app_name}' already exists.")
+                return Console.error(f"Error: The directory '{app_name}' already exists.")
             
             os.makedirs(app_name)
-
         return self.copy_common_files(app_name)
 
-        
-    
     def main(self):
         command = sys.argv
         length_command = len(command)
@@ -37,13 +33,12 @@ class BaseCommand:
                 return self.no_app_name()
             return self.create_app(command[2])
 
-        return print(f"Command is not found!")
-
+        return Console.error(f"Command is not found!")
+    
     def copy_common_files(self, app_dir):
         template_dir = os.path.join(os.path.dirname(__file__), 'templates')
         if not os.path.exists(template_dir):
-            print(f"Error: Template directory '{template_dir}' not found.")
-            return
+            return Console.error(f"Error: Template directory '{template_dir}' not found.")
 
         for item in os.listdir(template_dir):
             source = os.path.join(template_dir, item)
@@ -57,12 +52,12 @@ class BaseCommand:
             else:
                 shutil.copy2(source, destination)
                 
-        print(f"Common files and directories copied to {app_dir}.")
+        Console.success(f"Common files and directories copied to {app_dir}.")
 
 
-    
 def main():
     return BaseCommand().main()
 
 if __name__ == "__main__":
     main()
+    

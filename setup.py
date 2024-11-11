@@ -11,7 +11,7 @@ setup(
     url='https://github.com/neel/neel',  
     packages=find_packages(),  
     install_requires=[
-        'fastapi', 'pydentic', 
+        'fastapi[standard]', 'pydentic', 
         'sqlalchemy', 'uvicorn',
         'alembic'
     ],

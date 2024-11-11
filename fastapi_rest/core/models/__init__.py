@@ -1,2 +1,2 @@
-from .models import Model, Base
-from .fields import FileField
+from .fields import CharField, IntegerField, BooleanField, FileField, TextField
+from .base_models import Model, Base

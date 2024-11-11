@@ -133,18 +133,16 @@ class UpdateMixin(FieldValidation, UpdateMethodRemoveFile, HandleRemoveFile):
             
             error, data = await self._file_upload_handle
 
-            print(data)
-
             if error:
                 self._file_remove_handle(data)
                 return False, error
             
             old_data = self._update_method_remove_file_get()
-            session.commit()
             if refresh:
-                session.refresh(self)
-            
+                session.merge(self)
+                session.commit()
             session.close()
+            
             self._file_remove_handle(old_data)
             return True, self
         

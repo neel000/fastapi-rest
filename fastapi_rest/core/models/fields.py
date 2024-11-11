@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Text
+from sqlalchemy import Column, Text, String, Integer, Boolean
 from sqlalchemy.sql.base import _NoArg
 from sqlalchemy.sql.schema import SchemaConst
 import base64
@@ -104,6 +104,26 @@ class File(Column):
     def remove(self, value):
         if value and os.path.exists(value):
             os.remove(value)
+
+class FileField:
+    def __new__(cls, upload_to=""):
+        return File(Text, upload_to=upload_to)
+    
+class CharField:
+    def __new__(cls, max_length=20, **kwargs):
+        return Column(String(max_length), **kwargs)
+
+class IntegerField:
+    def __new__(cls, **kwargs):
+        return Column(Integer, **kwargs)
+
+class BooleanField:
+    def __new__(cls, **kwargs):
+        return Column(Boolean, **kwargs)
+
+class TextField:
+    def __new__(cls, **kwargs):
+        return Column(Text, **kwargs)
 
 class FileField:
     def __new__(cls, upload_to=""):

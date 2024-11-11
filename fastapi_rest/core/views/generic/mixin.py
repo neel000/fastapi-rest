@@ -30,7 +30,10 @@ class SchemaValidationMixin:
         
         content_type = self.request.headers.get("Content-Type")
 
-        if content_type == "application/json":
+        if not content_type:
+            payload = None
+
+        elif content_type == "application/json":
             payload = await self.request.json()
 
         elif content_type.startswith("multipart/form-data"):
