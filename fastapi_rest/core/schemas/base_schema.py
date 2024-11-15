@@ -26,7 +26,7 @@ class BaseSchema(BaseModel):
     def __key_value(self):
         data = {}
         for key, value in self.__dict__.items():
-            if value:
+            if value is not None:
                 if value.__class__ == bytes:
                     value = pickle.loads(value)
                 
