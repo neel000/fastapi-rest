@@ -36,7 +36,7 @@ class BaseCommand:
         return Console.error(f"Command is not found!")
     
     def copy_common_files(self, app_dir):
-        template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+        template_dir = os.path.join(os.path.dirname(__file__), 'templates/core')
         if not os.path.exists(template_dir):
             return Console.error(f"Error: Template directory '{template_dir}' not found.")
 
