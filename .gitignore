@@ -7,6 +7,8 @@ fastapi_rest.egg-info
 fastapi_rest.egg-info/
 fastapi_rest/__pycache__
 fastapi_rest/__pycache__/
+test/__pycache__/
+test/app/__pycache__/
 fastapi_rest/*/__pycache__
 fastapi_rest/*/__pycache__/
 fastapi_rest/*/*/__pycache__
@@ -16,4 +18,5 @@ fastapi_rest/*/*/*/__pycache__/
 fastapi_rest/*/*/*/*/__pycache__
 fastapi_rest/*/*/*/*/__pycache__/
 fastapi_rest/*/*/*/*/*/__pycache__
+fastapi_rest/*/*/*/*/*/__pycache__/
 fastapi_rest/*/*/*/*/*/__pycache__/

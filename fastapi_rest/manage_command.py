@@ -15,7 +15,7 @@ class ManageControl:
     def copy_file(self, app_dir):
         os.makedirs(app_dir)
 
-        dir = os.path.join(os.path.dirname(__file__), 'app')
+        dir = os.path.join(os.path.dirname(__file__), 'templates/app')
 
         if not os.path.exists(dir):
             return Console.error(f"Error: directory '{dir}' not found.")

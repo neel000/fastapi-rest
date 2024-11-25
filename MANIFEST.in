@@ -1,7 +1,6 @@
 # Include the templates directory and all its contents
-include fastapi_rest/templates/*
-include fastapi_rest/core/*
+include fastapi_rest/*
+
 
 # If you want to include subdirectories and their contents, use the recursive syntax:
-recursive-include fastapi_rest/templates *
-recursive-include fastapi_rest/core *
+recursive-include fastapi_rest *
