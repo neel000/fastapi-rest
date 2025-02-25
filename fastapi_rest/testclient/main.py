@@ -2,7 +2,7 @@ from unittest.mock import patch
 from fastapi.testclient import TestClient as AppTestClient
 from bjs_sqlalchemy.testclient import TestClient as DBTestClient
 from bjs_sqlalchemy.models.config import DatabaseConfig, AsyncDatabaseConfig
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractmethod
 
 class MockSession:
     _client = None
@@ -27,7 +27,8 @@ class MockSession:
 session = MockSession()
 
 class TestClient(DBTestClient, ABC):
-    @abstractclassmethod
+    @classmethod
+    @abstractmethod
     def app_name(cls):
         return None
 

@@ -11,7 +11,6 @@ class ManageControl:
         for i in self.mapper().keys():
             Console.info(f"python manage.py {i} \n")
         
-    
     def copy_file(self, app_dir):
         os.makedirs(app_dir)
 
@@ -77,3 +76,4 @@ class ManageControl:
             return mapper[arg]()
         
         return Console.error("Command is not valid!")
+

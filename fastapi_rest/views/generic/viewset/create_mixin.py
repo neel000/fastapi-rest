@@ -1,11 +1,13 @@
 from fastapi import status
 import asyncio
+from fastapi_rest.views.generic.mixin.handle_row_data import HandleRowData
 
-class CreateMixin:
+class CreateMixin(HandleRowData):
     models = None
+    refresh = True
     
-    def perform_create(self, *args, **kwargs):
-        return
+    def perform_create(self, status, instance):
+        return self.handle_data(instance)
 
     def post(self):
         schema, message = asyncio.run(self.request_handle_schema())
@@ -13,15 +15,15 @@ class CreateMixin:
             self.status_code=status.HTTP_400_BAD_REQUEST
             return {"message":str(message)}, 
                 
-        _status, instance = schema.save(session=self.session)
+        _status, instance = schema.save(session=self.session, refresh=self.refresh)
 
         if not _status:
             self.status_code=status.HTTP_400_BAD_REQUEST
             return {"message":instance}
                 
         self.status_code = status.HTTP_201_CREATED
-        self.perform_create(_status=_status, instance=instance)
-        return instance.model_dump()
+        data = self.perform_create(status=_status, instance=instance)
+        return data
         
 class AsyncCreateMixin:
     models = None

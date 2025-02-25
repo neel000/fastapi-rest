@@ -9,11 +9,14 @@ class CommonInstance:
     def _instance(self):
         if not hasattr(self.models, self.lookup_fields):
             return None
+        
         attr = getattr(self.models, self.lookup_fields)
         instance = self.get_instance_data()
+
         if instance:
             query = self.get_queryset().filter(attr==instance)
             return query
+        
         return None
 
 class InstanceMixin(CommonInstance):

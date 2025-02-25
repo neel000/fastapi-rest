@@ -1,16 +1,14 @@
-from fastapi_rest.auth.mixin import AccessMixin
 from fastapi_rest.views.generic.viewset.base import ViewSet, AsyncViewSet
+
 from fastapi_rest.views.generic.viewset.read_mixin import(
     ListDetailMixin, AsyncListDetailMixin
 )
-
 from fastapi_rest.views.generic.viewset.create_mixin import(
     CreateMixin, AsyncCreateMixin
 )
 from fastapi_rest.views.generic.viewset.update_mixin import(
     UpdateMixin, AsyncUpdateMixin
 )
-
 from fastapi_rest.views.generic.viewset.delete_mixin import(
     DeleteMixin, AsyncDeleteMixin
 )
